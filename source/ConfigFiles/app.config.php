@@ -40,6 +40,7 @@ class Settings
 	// encryption key value
 	const key = '1234567890123456ABCDEFGHIJKLMNOP'; // Used for Salt for encryption and decryption.  You should generate your Salt and not use the default key provided
 	const UseWorkflow = 'false';  // true/false whether or not to use workflows associated to ServiceKey
+	const ActivationKey = '';
 	// Application Data Values 
 	const ApplicationName = 'My Test App';
 	const SoftwareVersion = 'v1.0';
@@ -62,7 +63,7 @@ class Settings
 	const TxnData_ProcessAsKeyed = false;		// 'true', 'false' Depending on industrytype toggle between a swipe example and a keyed transaction
 	const TxnData_EntryMode = 'TrackDataFromMSR';		// [Ecommerce/MOTO : Keyed] [Retail/Restaurant : Keyed/TrackDataFromMSR] 
 	const TxnData_OrderOfProcessingTracks = 'Track2|Track1|Keyed';		// The order consists of three values seperated by Pipe. Ex. Track2|Track1|Keyed 
-	const TxnData_ProcessMagensaTxn = false; // Magensa is an End to End encryptions solution offered through MagTek	
+	const TxnData_ProcessMagensaTxn = true; // Magensa is an End to End encryptions solution offered through MagTek	
 	const TxnData_IndustryType = 'Retail';		// Valid Values 'Ecommerce', 'MOTO', 'Retail', 'Restaurant' 
 	const TxnData_CustomerPresent = 'Present';		// [Ecommerce : Ecommerce] [MOTO : MOTO] [Retail/Restaurant : Present] 
 	const TxnData_UserId = 'UTest';				// Some services require a UserId and Password
