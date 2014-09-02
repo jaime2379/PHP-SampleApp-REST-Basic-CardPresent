@@ -71,6 +71,10 @@ if (isset ( $_serviceInformation->BankcardServices ) ){
 	include_once ABSPATH.'/ApplicationAndMerchantSetupFiles/Create_BCP_MerchantProfiles.php';
 }
 
+
+//if ($_serviceInformation->ElectronicCheckingServices->ElectronicCheckingService instanceof ElectronicCheckingService || is_array($_serviceInformation->ElectronicCheckingServices->ElectronicCheckingService)){
+//	include_once ABSPATH.'/ApplicationAndMerchantSetupFiles/Create_ACH_MerchantProfiles.php';
+//}
 include_once ABSPATH.'/ConfigFiles/SaveConfigValues.php';
 
 ?>

@@ -38,7 +38,7 @@ function setBCPTxnData($_serviceInformation) {
 		// $tenderData->address = '1000 1st Av';
 		// $tenderData->zip = '10101';
 		// $tenderData->track1 = 'B4111111111111111^EVOSNAP/TESTCARD^15121010454500415000010';
-		$tenderData->track2 = '4111111111111111=15121010454541500010';
+		$tenderData->track2 = '4111111111111111=13121010454541500010';
 	}
 	if (Settings::IndustryType == 'Restaurant') {
 		$tenderData = new creditCard ();
@@ -50,14 +50,14 @@ function setBCPTxnData($_serviceInformation) {
 		// $tenderData->address = '1000 1st Av';
 		// $tenderData->zip = '10101';
 		// $tenderData->track1 = 'B4111111111111111^EVOSNAP/TESTCARD^15121010454500415000010';
-		$tenderData->track2 = '4111111111111111=15121010454541500010';
+		$tenderData->track2 = '4111111111111111=13121010454541500010';
 	}
 	if (Settings::IndustryType == 'MOTO') {
 		$tenderData = new creditCard ();
 		$tenderData->type = 'MasterCard';
 		$tenderData->name = 'John Doe';
 		$tenderData->number = '5454545454545454';
-		$tenderData->expiration = '1215'; // MMYY
+		$tenderData->expiration = '1213'; // MMYY
 		/*
 		 * $tenderData->cvv = '111'; // Security code $tenderData->address = '1000 1st Av'; $tenderData->zip = '10101';
 		 */
@@ -67,7 +67,7 @@ function setBCPTxnData($_serviceInformation) {
 		$tenderData->type = 'Visa';
 		$tenderData->name = 'John Doe';
 		$tenderData->number = '4111111111111111';
-		$tenderData->expiration = '1215'; // MMYY
+		$tenderData->expiration = '1213'; // MMYY
 		$tenderData->cvv = '111'; // Security code
 		$tenderData->address = '3000 3rd Av';
 		$tenderData->city = 'Denver';
@@ -102,7 +102,7 @@ function setBCPTxnData($_serviceInformation) {
 		// $tenderData->state = 'CO';
 		// $tenderData->zip = '10101';
 		// $tenderData->track1 = 'B4111111111111111^EVOSNAP/TESTCARD^15121010454500415000010';
-		$tenderData->track2 = '4111111111111111=15121010454541500010';
+		$tenderData->track2 = '4111111111111111=13121010454541500010';
 		// $tenderData->encryptionKeyId = '9010010B0C2472000021'; //20-character string returned by MagneSafe device when card is swiped.
 		// $tenderData->securePaymentAccountData = '87936F09AE06386BA4CD81ADFF7DF0FA5AC1B28EF9F7B7075E415545F9B9095C0AC5FA12B9905325'; //Encrypted Track 2 data returned by MagneSafe device when card is swiped.
 		// $tenderData->identificationInformation = '9ED72A486AB36DC352957C2C00607E937D1D90CB8B09A8588629AABA8EAF0FD65296A4FBA490EECFCD8D5B350438C4BFA6A36FFA2ADAAA3E'; //Encrypted MagnePrint® Information returned by the MagneSafe™ device when card is swiped.
@@ -113,7 +113,7 @@ function setBCPTxnData($_serviceInformation) {
 		$tenderData->type = 'Visa';
 		$tenderData->name = 'John Doe';
 		$tenderData->number = '4111111111111111';
-		$tenderData->expiration = '1215'; // MMYY
+		$tenderData->expiration = '1213'; // MMYY
 		$tenderData->cvv = '111'; // Security code, For MagTek Always set to "Null". Value does not come from the device.
 		$tenderData->address = '1000 1st Av';
 		$tenderData->city = 'Denver';
@@ -244,7 +244,10 @@ function setBCPTxnData($_serviceInformation) {
 		
 		$transactionData->InterchangeData = $interchangeData;
 	}
-	
+	if(Settings::ProcessInternationalTxn)
+	{
+		$transactionData->Is3DSecure = false;
+	}
 	$transaction->TxnData = $transactionData;
 	return $transaction;
 }

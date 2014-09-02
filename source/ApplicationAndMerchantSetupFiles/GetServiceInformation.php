@@ -63,7 +63,7 @@ if ($_serviceId == null)
 			$_serviceId['singleService'] = array('ServiceId' => $response->BankcardServices->BankcardService->ServiceId, 'ServiceName' => $response->BankcardServices->BankcardService->ServiceName);
 
 		}
-		if (isset ( $response->Workflows->Workflow )) {
+		if (isset ( $response->Workflows)) {
 			echo '<div style="text-align:center; border-width: thin; border-color: black; border-style:solid; "><h1>Service Information - Bankcard Workflows</h1></div>';
 			if (is_array ( $response->Workflows )) {
 				foreach ( $response->Workflows as $Workflow ) {

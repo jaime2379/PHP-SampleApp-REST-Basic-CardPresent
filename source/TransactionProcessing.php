@@ -60,7 +60,6 @@ require_once ABSPATH.'/ConfigFiles/ReadConfigValues.php';
 		$_merchantProfileId[0]['ProfileId'] = Settings::ActivationKey;
 		$_merchantProfileId[1]['ProfileId'] = Settings::ActivationKey.'_TC';
 	}
-
 /*
  *
  * Create new web service client class using provided token
@@ -80,6 +79,7 @@ if (!Settings::UseWorkflow)
 	$client = new JSONClient ( $_identityToken, $_baseURL, $_merchantProfileId [0] ['ProfileId'], $_merchantProfileId [0] ['ServiceId'], $_applicationProfileId );
 else
 	$client = new JSONClient ( $_identityToken, $_baseURL, $_merchantProfileId [0] ['ProfileId'], $_workflowId [0] ['ServiceId'], $_applicationProfileId );
+
 $_serviceInformation = $client->getServiceInformation();
 
 if (isset($_serviceInformation->BankcardServices)){
@@ -92,10 +92,10 @@ if (isset($_serviceInformation->ElectronicCheckingServices->ElectronicCheckingSe
 	require_once ABSPATH.'/TransactionProcessingScripts/ElectronicCheckingTransactionProcessing.php';
 }
 
-if (isset($_serviceInformation->StoredValueServices->StoredValueService)){
-	$_storedvalueServices = $_serviceInformation->StoredValueServices;
-	require_once ABSPATH.'/TransactionProcessingScripts/StoredValueTransactionProcessing.php';
-}
+//if (isset($_serviceInformation->StoredValueServices->StoredValueService)){
+	//$_storedvalueServices = $_serviceInformation->StoredValueServices;
+	//require_once ABSPATH.'/TransactionProcessingScripts/StoredValueTransactionProcessing.php';
+//}
 
 echo '<br><b>     Transaction Processing script complete!</b><br />';
 ?>
